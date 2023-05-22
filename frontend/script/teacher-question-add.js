@@ -52,17 +52,10 @@ function addQuestion() {
 // ///////////////////////////////////////////////////////////////////////////API CALL
 
 async function viewQuestion() {
-  // var flexDiv = document.getElementById('col');
-  // flexDiv.classList.add('col-hor');
-
-
 
   for (var i = 0; i < table.rows.length;) {
     table.deleteRow(i);
   }
-
-
-
 
   let questions = [];
 
@@ -126,15 +119,27 @@ async function deleteQuestion(questionID) {
   try {
 
     const response = await fetch('http://localhost:2050/api/test/deletequestion/' + questionID);
-    console.log("Deleting Question  : " + questionID);
-    
+    const data = await response.json();
+    console.log(data);
+    if (data.status === true && data.statusCode === 200) {
+
+      console.log("Deleted Question  : " + questionID);
+      alert("Deleted Question  : " + questionID);
+    }
+    else {
+      // alert('Error Deleting question after fetching. Please try again later !.\ndataStatus : ' + data.status + "\nstatus code : " + data.statusCode + "\n" + data.message);
+    }
+
+
+    viewQuestion();
+
   } catch (error) {
-    
+    alert('Error fetching questions. Please try again later. \n' + error);
   }
 }
 
 
-function addQuestion() {
+function addQuestionView() {
 
   toggleView('add');
 }

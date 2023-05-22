@@ -201,9 +201,7 @@ class TestController {
           console.log(err);
           throw err;
         }
-        console.log("--------------------------");
-        console.log(sql);
-        console.log("--------------------------");
+
         
         con.query(sql, function (err, result) {
         if (err) {
@@ -212,7 +210,9 @@ class TestController {
         }
           console.log("Number of records deleted: " + result.affectedRows);
           res.ok({
-            message: "Questions fetched successfully.",
+            status: true,
+            statusCode  : 200,
+            message: "Deleted Successfully",
             data: result.affectedRows
           });
 
@@ -226,7 +226,6 @@ class TestController {
         error: error.message
       });
     }
-    console.log("del : "+id);
   }
 
 
