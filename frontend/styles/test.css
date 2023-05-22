@@ -121,7 +121,7 @@ h1 {
 #question-text {
   font-size: 1.2em;
   margin-top: 20px;
-  margin-bottom: 60px;
+  margin-bottom: 25px;
 
 }
 
@@ -218,7 +218,7 @@ Styling for the results container #results {
 
 
 
-.ans-input {
+#ans-input {
   margin: 20px;
   padding: 10px;
   border: 2px solid #ffffff;
@@ -226,5 +226,5 @@ Styling for the results container #results {
   font-size: 16px;
   line-height: 1.5;
   resize: horizontal;
-  ;
+  min-height: 50px;
 }
