@@ -1,3 +1,5 @@
+var mysql = require('mysql2');
+
 const { Sequelize } = require('sequelize');
 const { DB_TABLES: { QUESTION, TEST } } = require('../../db/sql.connect')
 const { commonWords } = require('../../common/utils/commonWords')
@@ -187,10 +189,36 @@ class TestController {
     }
 
     try {
-      res.ok({
-        message: "Questions fetched successfully.",
-        data: allQuestions
+      var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "root",
+        database: "evaluation_system_database"
       });
+      var sql = "DELETE FROM question WHERE id=" + id;
+      con.connect(function (err) {
+        if (err) {
+          console.log(err);
+          throw err;
+        }
+        console.log("--------------------------");
+        console.log(sql);
+        console.log("--------------------------");
+        
+        con.query(sql, function (err, result) {
+        if (err) {
+          console.log(err);
+          throw err;
+        }
+          console.log("Number of records deleted: " + result.affectedRows);
+          res.ok({
+            message: "Questions fetched successfully.",
+            data: result.affectedRows
+          });
+
+        });
+      });
+
       
     } catch (error) {
       res.fail({
