@@ -82,7 +82,7 @@ async function viewQuestion() {
         row.insertCell(0).innerHTML = q[idx].id;
         row.insertCell(1).innerHTML = q[idx].question_text;
         row.insertCell(2).innerHTML = q[idx].answer;
-        row.insertCell(3).innerHTML = "<td><input type='button' value='Delete' onclick='deleteRow(" + q[idx].id + ")'></td>";
+        row.insertCell(3).innerHTML = "<td><input type='button' value='Delete' onclick='deleteQuestion(" + q[idx].id + ")'></td>";
 
       }
 
@@ -118,9 +118,19 @@ function getDeteleButton(id) {
 }
 
 
-// ///////////////////////////////////////////DELETE ROW
-function deleteQuestion(questionID) {
-  console.log("dELETING Question  : " + questionID);
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////  DELETE ROW ///////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+async function deleteQuestion(questionID) {
+
+  try {
+
+    const response = await fetch('http://localhost:2050/api/test/deletequestion/' + questionID);
+    console.log("Deleting Question  : " + questionID);
+    
+  } catch (error) {
+    
+  }
 }
 
 

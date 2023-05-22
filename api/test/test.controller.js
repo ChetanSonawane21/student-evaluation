@@ -175,6 +175,33 @@ class TestController {
   }
 
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // //////////////////////////////////////////// DELETE API//////////////////////////////////////////////////
+  // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  async deleteQuestion(req, res) { 
+    const { id } = req.params;
+
+    if (!id) {
+      res.fail({ message: 'Failed to fetch result!', error: err.message });
+    }
+
+    try {
+      res.ok({
+        message: "Questions fetched successfully.",
+        data: allQuestions
+      });
+      
+    } catch (error) {
+      res.fail({
+        message: 'Failed to find questions.',
+        error: error.message
+      });
+    }
+    console.log("del : "+id);
+  }
+
+
 
 }
 
