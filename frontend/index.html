@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="./styles/styles.css">
+</head>
+<body>
+	<div class="login-container">
+		<div class="page-title">Login</div>
+		<form class="login-form">
+			<label for="email">Email</label>
+			<input type="email" name="email" id="email" required>
+
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" required>
+
+			<label for="usertype">Login As</label>
+			<select name="usertype" id="usertype">
+				<option value="teacher">Teacher</option>
+				<option value="student">Student</option>
+			</select>
+			<input type="submit" value="Login" onclick="login()">
+			<div class="register-link">
+				<a href="register.html" class="register-btn">Dont have an account? Register Now!</a>
+			</div>
+			
+		</form>
+	</div>
+	<script src="/frontend/script/script.js"></script>
+	<script src="/frontend/script/test.js"></script>
+	<script src="/frontend/script/teacher-question-add.js"></script>
+	<script src="/frontend/script/register.js"></script>
+	
+</body>
+</html>

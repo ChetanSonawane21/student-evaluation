@@ -1,0 +1,89 @@
+body {
+    background-color: #f1f1f100;
+    font-family: 'Times New Roman';
+    background-image: linear-gradient(to bottom, rgba(13, 251, 255, 0), rgba(1, 187, 255, 0.815));
+    height: 95.8vh;
+    width: 100%;
+  }
+
+
+/* Styling for the login-container */
+.login-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #00bfffcb;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+	background-image: linear-gradient(to bottom, rgba(13, 251, 255, 0.8), rgba(0, 0, 0, 0.4));
+	background-size: auto;
+	background-position: center;
+	height:94%;
+	width: 60%;
+}
+
+/* Styling for the page title */
+.page-title {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 35px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+/* Styling for the form */
+form {
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+	width: 100%;
+}
+
+/* Styling for the form-input */
+.form-input {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+/* Styling for the label */
+label {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+/* Styling for the input */
+input {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+}
+
+/* Styling for the form-submit-btn */
+.form-submit-btn {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.form-login-btn {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+/* Styling for the success-message */
+.success-message {
+	margin-top: 20px;
+	background-color: #5cb85c;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+	text-align: center;
+}

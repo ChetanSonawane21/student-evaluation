@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Add Question - Teacher</title>
+	<link rel="stylesheet" type="text/css" href="./styles/styles.css">
+	<link rel="stylesheet" type="text/css" href="./styles/teacher_dashboard.css">
+</head>
+
+<body>
+	<div class="login-container dashboard">
+		<h1 class="page-title">Teacher Dashboard</h1>
+		<div id="details">
+			<button id="view-questions" style="display: none;" type="button" onclick="viewQuestion()">View
+				Questions</button>
+			<button id="add-questions" type="button" onclick="addQuestion()">Add Questions</button>
+
+		</div>
+		<div id="col">
+			<div id="addForm" style="display: none;">
+				<form>
+					<div>
+						<label for="questionText">Question Text:</label>
+						<textarea id="questionText" name="questionText"></textarea>
+					</div>
+					<div>
+						<label for="answerText">Answer Text:</label>
+						<input type="text" id="answerText" name="answerText">
+					</div>
+					<button type="button" onclick="addQuestion()">Add Question</button>
+
+				</form>
+				<div id="success-message" style="display:none;">Question added successfully!</div>
+			</div>
+			<div id="question-table" style="display: block;"></div>
+		</div>
+		<p><a href="index.html" class="back-link">Back to Home</a></p>
+
+
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
+	<script src="/frontend/script/script.js"></script>
+	<script src="/frontend/script/test.js"></script>
+	<script src="/frontend/script/teacher-question-add.js"></script>
+	<script src="/frontend/script/register.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,387 @@
+.container {
+	margin: 0 auto;
+	max-width: 500px;
+	padding: 20px;
+	background-color: #00bfffcb;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+	background-image: linear-gradient(to bottom, rgba(13, 251, 255, 0.8), rgba(0, 0, 0, 0.4)), url('path/to/image.jpg');
+	background-size: auto;
+	background-position: center;
+	height: 100vh;
+
+}
+
+.login-container {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #00bfffcb;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+	background-image: linear-gradient(to bottom, rgba(13, 251, 255, 0.8), rgba(0, 0, 0, 0.4)), url('path/to/image.jpg');
+	height: 110vh;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	height: 500px;
+	width: 600px;
+}
+
+.page-title {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+h1 {
+	margin-top: 0;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	height: 500px;
+	width: 600px;
+}
+
+label {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+input,
+select {
+	margin-top: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+input[type="submit"] {
+	margin-top: 20px;
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #0062cc;
+}
+
+
+
+
+/* Styling for the question container */
+.question-container {
+	margin-top: 50px;
+}
+
+/* Styling for the question */
+.question {
+	margin-bottom: 30px;
+}
+
+.question h2 {
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* Styling for the answer options */
+.answer-option {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.answer-option input[type="radio"] {
+	margin-right: 10px;
+}
+
+.answer-option label {
+	font-size: 20px;
+}
+
+/* Styling for the selected answer option */
+.answer-option.selected label {
+	color: white;
+	background-color: #2196f3;
+	border-color: #2196f3;
+}
+
+/* Styling for the previous and next buttons */
+.button-container button {
+	padding: 10px 20px;
+	font-size: 20px;
+	font-weight: bold;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	background-color: #f1f1f1;
+	transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+	background-color: #ddd;
+}
+
+/* Styling for the timer container */
+.timer-container {
+	margin-top: 50px;
+}
+
+.timer-container span {
+	font-size: 50px;
+	font-weight: bold;
+}
+
+/* Animations for the question and answer options */
+.question,
+.answer-option {
+	animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+
+/* Global Styles */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+h1 {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+/* Quiz Styles */
+#quiz-container {
+	margin-top: 40px;
+}
+
+#question-container {
+	margin-top: 20px;
+}
+
+.question {
+	margin-bottom: 20px;
+}
+
+.question h2 {
+	margin-bottom: 10px;
+}
+
+.answer-container {
+	margin-top: 10px;
+}
+
+.answer-option {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.answer-option input[type="radio"] {
+	margin-right: 10px;
+}
+
+.answer-option input[type="radio"]:checked+span {
+	background-color: #2ecc71;
+	color: #fff;
+}
+
+.answer-option span {
+	display: inline-block;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.answer-option span:hover {
+	background-color: #ddd;
+}
+
+.button-container {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.button:hover {
+	background-color: #2ecc71;
+	color: #fff;
+}
+
+.previous-button {
+	background-color: #ccc;
+}
+
+.previous-button:hover {
+	background-color: #bbb;
+}
+
+.next-button {
+	background-color: #2ecc71;
+	color: #fff;
+}
+
+.next-button:hover {
+	background-color: #29b765;
+}
+
+/* Progress Bar Styles */
+.progress-bar-container {
+	margin-top: 20px;
+	height: 20px;
+	background-color: #f1f1f1;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.progress-bar {
+	height: 100%;
+	background-color: #2ecc71;
+	width: 0%;
+	transition: all 0.3s ease;
+}
+
+/* Timer Styles */
+.timer-container {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.timer-container span {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+/* Results Styles */
+.results-container {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.results-container h2 {
+	margin-bottom: 20px;
+}
+
+.results-container p {
+	margin-bottom: 10px;
+}
+
+.results-container .score {
+	font-weight: bold;
+}
+
+
+form {
+	margin: 42px;
+	padding: 42px;
+	border: 1px solid #003efa;
+	border-radius: 5px;
+	background-color: #45e6d6bb;
+	font-family: "Times New Roman";
+	font-size: 24px;
+	line-height: 1.5;
+}
+
+label {
+	display: inline-block;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+textarea,
+input[type="text"] {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 14px;
+	line-height: 1.5;
+	font-family: "Times New Roman";
+	font-size: 20px;
+}
+
+button[type="button"] {
+	display: block;
+	margin: 20px auto;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #ffffff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+button[type="button"]:hover {
+	background-color: #0069d9;
+}
+
+.register-link {
+    position:sticky;
+    bottom: 5px;
+    right: 0;
+    margin-top: 10px;
+}
+
+.register-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 100px 10px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+	width: 100%;
+}

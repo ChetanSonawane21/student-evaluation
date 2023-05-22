@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "email": "madhukar@gmail.com",
+        "name": "madhukar",
+        "password": "123456",
+        "role": "teacher"
+    },
+    {
+        "id": 2,
+        "email": "akshay@gmail.com",
+        "name": "akshay",
+        "password": "123456",
+        "role": "teacher"
+    },
+    {
+        "id": 3,
+        "email": "darshan@gmail.com",
+        "name": "darshan",
+        "password": "123456",
+        "role": "student"
+    },
+    {
+        "id": 4,
+        "email": "mangesh@gmail.com",
+        "name": "mangesh",
+        "password": "123456",
+        "role": "student"
+    }
+]

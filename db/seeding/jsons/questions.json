@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "question_text": "What is JavaScript",
+        "answer": "JavaScript is a scripting language. It is different from Java language. It is object-based, lightweight, cross-platform translated language. It is widely used for client-side validation. The JavaScript Translator (embedded in the browser) is responsible for translating the JavaScript code for the web browser. More details."
+        
+    },
+    {
+        "id": 2,
+        "question_text": "List some features of JavaScript?",
+        "answer": "Some of the features of JavaScript are 1. Lightweight 2. Interpreted programming language 3. Good for the applications which are network-centric 4. Complementary to Java 5. Complementary to HTML 6. Open source 7. Cross-platform"
+    },
+    {
+        "id": 3,
+        "question_text": "Who developed JavaScript, and what was the first name of JavaScript?",
+        "answer": "JavaScript was developed by Brendan Eich, who was a Netscape programmer. Brendan Eich developed this new scripting language in just ten days in the year September 1995. At the time of its launch, JavaScript was initially called Mocha. After that, it was called Live Script and later known as JavaScript."
+    },
+    {
+        "id": 4,
+        "question_text":  "List some of the advantages of JavaScript.",
+        "answer": "Some of the advantages of JavaScript are: 1. Server interaction is less 2. Feedback to the visitors is immediate 3. Interactivity is high 4. Interfaces are richer "
+    },
+    {
+        "id": 5,
+        "question_text": "List some of the disadvantages of JavaScript.",
+        "answer": "Some of the disadvantages of JavaScript are: 1. No support for multithreading 2. No support for multiprocessing 3. Reading and writing of files is not allowed 4. No support for networking applications."
+    },
+    {
+        "id": 6,
+        "question_text": "Can an anonymous function be assigned to a variable?",
+        "answer": "The variables of JavaScript represent the arguments that are passed to a function"
+    },
+    {
+        "id": 7,
+        "question_text": "Define closure",
+        "answer": "In JavaScript, we need closures when a variable which is defined outside the scope in reference is accessed from some inner scope."
+    },
+    {
+        "id": 8,
+        "question_text": "If we want to return the character from a specific index which method is used?",
+        "answer": "The JavaScript string charAt() method is used to find out a char value present at the specified index. The index number starts from 0 and goes to n-1, where n is the length of the string. The index value can't be a negative, greater than or equal to the length of the string."
+    },
+    {
+        "id": 9,
+        "question_text": "What is the difference between JavaScript and JScript?",
+        "answer": "Netscape provided the JavaScript language. Microsoft changed the name and called it JScript to avoid the trademark issue. In other words, you can say JScript is the same as JavaScript, but Microsoft provides it."
+    },
+    {
+        "id": 10,
+        "question_text": " What is DOM? What is the use of document object?",
+        "answer": "DOM stands for Document Object Model. A document object represents the HTML document. It can be used to access and change the content of HTML."
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

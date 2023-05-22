@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Results</title>
+  <link rel="stylesheet" href="/frontend/styles/result.css">
+
+  <style>
+
+
+    .result-flex {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="result-flex">
+    <h1>Results</h1>
+    <p>Overall accuracy score: <strong id="accuracy-score"></strong></p>
+    <hr>
+    <h2>Question-wise accuracy scores</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>QNo.</th>
+          <th>Question</th>
+          <th>Answer</th>
+          <th>Accuracy Score</th>
+        </tr>
+      </thead>
+      <tbody id="question-scores"></tbody>
+    </table>
+    <hr>
+    <p><a href="index.html" class="back-link">Back to Home</a></p>
+  </div>
+
+  <script>
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const testId = urlParams.get('testId');
+
+    const url = `http://localhost:2050/api/test/result/${testId}`
+
+    async function loadTestResult (url) {
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+          'Content-Type': 'application/json'
+          },
+        });
+
+        const result = await response.json();
+
+        if (!(result.status && result.statusCode === 200)) {
+            alert('Error fetching result. Please try again later.');
+        }
+
+        return result.data;
+
+      } catch (error) {
+        alert('Error fetching result. Please try again later.');
+      }
+    }
+
+    // let url = `http://localhost:2050/api/test/result/1`;
+
+    async function showResult () {
+      
+      let result = await loadTestResult(url);
+
+      const overallAnswerAccuracyScore = result.overall_answer_accuracy_score;
+      
+      document.getElementById('accuracy-score').textContent = overallAnswerAccuracyScore;
+      
+      const answerSheet= result.answer_sheet;
+      
+      const questionScoresTable = document.getElementById('question-scores');
+      
+      answerSheet.forEach(({ question_number, question_text, answer, answer_accuracy_score }) => {
+      const row = document.createElement('tr');
+      const numberCell = document.createElement('td');
+      numberCell.textContent = question_number;
+      const questionCell = document.createElement('td');
+      questionCell.textContent = question_text;
+      const answerCell = document.createElement('td');
+      answerCell.textContent = answer ? answer : 'unanswered';
+      const accuracyCell = document.createElement('td');
+      accuracyCell.textContent = answer_accuracy_score;
+      row.appendChild(numberCell);
+      row.appendChild(questionCell);
+      row.appendChild(answerCell);
+      row.appendChild(accuracyCell);
+      questionScoresTable.appendChild(row);
+    });
+
+
+    }
+
+    showResult()
+
+  </script>
+</body>
+
+</html>

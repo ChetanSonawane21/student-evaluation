@@ -1,0 +1,36 @@
+table {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	background-color: #fff;
+	/* margin-top: 800px; */
+}
+
+#details {
+	width: 600px;
+	display: flex;
+	flex-direction: horizontal;
+	align-items: space-around;
+}
+
+#dashboard {
+	background-color: #00bfffcb;
+	height: 200vh;
+}
+
+th {
+	font-weight: bold;
+	border: 1px solid #ccc;
+	padding: 8px;
+}
+
+td {
+	border: 1px solid #ccc;
+	padding: 8px;
+}
+
+#question-table {
+	overflow: hidden;
+	overflow-y: scroll;
+	height: 500px;
+}

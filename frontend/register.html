@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register - Quiz App</title>
+	<link rel="stylesheet" type="text/css" href="./styles/register.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="page-title">Registration</h1>
+        <form id="registration-form">
+          <div class="form-input">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+          </div>
+          <div class="form-input">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+          </div>
+          <div class="form-input">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+          </div>
+          <div class="form-input">
+            <label for="usertype">User Type:</label>
+            <select id="usertype" name="usertype">
+              <option value="teacher">Teacher</option>
+              <option value="student">Student</option>
+            </select>
+          </div>
+          <input type="submit" class="form-submit-btn" value="Register">
+        </form>
+       
+    </div>
+
+   
+	<script src="/frontend/script/register.js"></script>
+    <script src="/frontend/script/script.js"></script>
+	<script src="/frontend/script/test.js"></script>
+	<script src="/frontend/script/teacher-question-add.js"></script>
+</body>
+</html>
