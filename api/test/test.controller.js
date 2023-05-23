@@ -5,8 +5,8 @@ const { DB_TABLES: { QUESTION, TEST } } = require('../../db/sql.connect')
 const { commonWords } = require('../../common/utils/commonWords')
 const {
   findUncommonKeywords,
-validateAnswerWithActualAnswer,
-removeDuplicateElementsFromArray
+  validateAnswerWithActualAnswer,
+  removeDuplicateElementsFromArray
 } = require('../../common/common.functions');
 
 class TestController {
@@ -54,6 +54,7 @@ class TestController {
     }
   }
 
+
   /**
    * Evaluate test and calculate final score
    * @param {*} req: Request
@@ -75,14 +76,35 @@ class TestController {
         const questionDetails = await QUESTION.findOne({ where: { id }, raw: true, attributes: ['id', 'question_text', 'answer'] });
         if (!questionDetails) return res.fail({ statusCode: 200, message: 'Invalid question id!' });
 
-        const summaryOfTeachersAnswer = findUncommonKeywords(questionDetails.answer);
-        const summaryOfStudentAnswer = findUncommonKeywords(answer);
-        const answerAccuracyScore = validateAnswerWithActualAnswer(summaryOfTeachersAnswer, summaryOfStudentAnswer)
+
+        var input = {
+          inputs: {
+            source_sentence: questionDetails.answer,
+            sentences: [
+              answer
+            ]
+          }
+        };
+
+        var ans = await TestController.query(input)*100;
+
+
+        // .then((response)=>{
+        console.log("Anserr  : ", JSON.stringify(ans));
+        // })
+
+        const answerAccuracyScore = answer.trim().length == 0 || questionDetails.answer.trim().length == 0 ? 0 : JSON.stringify(ans);
+        //const answerAccuracyScore = answer.trim().length == 0 || questionDetails.answer.trim().length == 0 ? 0: TestController.computeMatchingPercentage(answer, questionDetails.answer);
+
+
+
+        //................................................................
 
         singleQuestion.answer_accuracy_score = answerAccuracyScore;
         singleQuestion.question_text = questionDetails.question_text;
 
-        totalScore += answerAccuracyScore;
+        totalScore += parseFloat(answerAccuracyScore);
+        //console.log("total score",totalScore);
       }
 
       overallAnswerAccuracyScore = totalScore / totalQuestions;
@@ -93,7 +115,7 @@ class TestController {
       }
 
       const { id: testId } = await TEST.create({ answer_sheet: JSON.stringify(data) });
-      
+
       data.test_id = testId;
 
       res.ok({
@@ -176,12 +198,24 @@ class TestController {
     }
   }
 
+  static async query(data) {
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/DunnBC22/sentence-t5-base-FT-Quora_Sentence_Similarity-LG",
+      {
+        headers: { Authorization: "Bearer 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" },
+        method: "POST",
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await response.json();
+    return result;
+  }
 
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // //////////////////////////////////////////// DELETE API//////////////////////////////////////////////////
   // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  async deleteQuestion(req, res) { 
+  async deleteQuestion(req, res) {
     const { id } = req.params;
 
     if (!id) {
@@ -202,16 +236,16 @@ class TestController {
           throw err;
         }
 
-        
+
         con.query(sql, function (err, result) {
-        if (err) {
-          console.log(err);
-          throw err;
-        }
+          if (err) {
+            console.log(err);
+            throw err;
+          }
           console.log("Number of records deleted: " + result.affectedRows);
           res.ok({
             status: true,
-            statusCode  : 200,
+            statusCode: 200,
             message: "Deleted Successfully",
             data: result.affectedRows
           });
@@ -219,7 +253,7 @@ class TestController {
         });
       });
 
-      
+
     } catch (error) {
       res.fail({
         message: 'Failed to find questions.',
