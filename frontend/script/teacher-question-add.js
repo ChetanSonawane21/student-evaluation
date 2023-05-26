@@ -10,6 +10,7 @@ var historyTableDiv = document.getElementById('history-table');
 
 
 var table = document.createElement("TABLE");
+var historyTable = document.createElement("TABLE");
 
 
 function addQuestion() {
@@ -78,7 +79,6 @@ async function viewQuestion() {
         row.insertCell(1).innerHTML = q[idx].question_text;
         row.insertCell(2).innerHTML = q[idx].answer;
         row.insertCell(3).innerHTML = "<td><input type='button' value='Delete' onclick='deleteQuestion(" + q[idx].id + ")'></td>";
-
       }
 
 
@@ -144,6 +144,11 @@ async function deleteQuestion(questionID) {
 // ///////////////////////////////////////////////////  TEST RECORDS ///////////////////////////////////////////
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function displayTestHistory() {
+  for (var i = 0; i < historyTable.rows.length;) {
+    historyTable.deleteRow(i);
+  }
+
+  
   try {
     const response = await fetch('http://localhost:2050/api/test/gethistory');
     const data = await response.json();
@@ -152,25 +157,35 @@ async function displayTestHistory() {
     if (data.status === true && data.statusCode === 200) {
       let q = data.data;
 
-      console.log("CALL sUCCSSfUL");
-      // for (let idx in q) {
-      //   var row = table.insertRow(idx);
-      //   row.insertCell(0).innerHTML = q[idx].id;
-      //   row.insertCell(1).innerHTML = q[idx].question_text;
-      //   row.insertCell(2).innerHTML = q[idx].answer;
-      //   row.insertCell(3).innerHTML = "<td><input type='button' value='Delete' onclick='deleteQuestion(" + q[idx].id + ")'></td>";
+      for (let idx in q) {
+        var row = historyTable.insertRow(idx);
+        row.insertCell(0).innerHTML = q[idx].test_id;
+        row.insertCell(1).innerHTML = q[idx].email;
+        row.insertCell(2).innerHTML = q[idx].name;
+        row.insertCell(3).innerHTML = q[idx].score;
+        // row.insertCell(3).innerHTML = "<td><input type='button' value='Delete' onclick='deleteQuestion(" + q[idx].id + ")'></td>";
+      }
 
-      // }
+      var header = historyTable.createTHead().insertRow(0);
+      header.insertCell(0).innerHTML = "<b>Test Id</b>";
+      header.insertCell(1).innerHTML = "<b>Email</b>";
+      header.insertCell(2).innerHTML = "<b>Name</b>";
+      header.insertCell(3).innerHTML = "<b>Score</b>";
+
+
 
     }
     else
     {
+      console.log("200 ERROR ");
       console.log(data);
       }
   } catch (error) {
     console.log(error);
+
     
   }
+  historyTableDiv.appendChild(historyTable);
   toggleView('history')
 
 }
