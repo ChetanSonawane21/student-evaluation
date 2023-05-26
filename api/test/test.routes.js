@@ -6,6 +6,7 @@ const { schema } = require('./test.validation')
 
 router.get('/begin', TestController.beginTest);
 router.get('/getquestions', TestController.getAllQuestions);
+router.get('/gethistory', TestController.getTestHistory);
 router.get('/deletequestion/:id', TestController.deleteQuestion);
 router.post('/evaluate', [joi(schema.answerSheet)], TestController.evaluateTest);
 router.get('/result/:id', TestController.getPreviousResult);

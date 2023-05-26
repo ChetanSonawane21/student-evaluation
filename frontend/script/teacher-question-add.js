@@ -1,8 +1,12 @@
 
 const addQueBtn = document.getElementById('add-questions');
 var formDiv = document.getElementById('addForm');
+
 const viewQueBtn = document.getElementById('view-questions');
 var tableDiv = document.getElementById('question-table');
+
+const testHistoryBtn = document.getElementById('test-history');
+var historyTableDiv = document.getElementById('history-table');
 
 
 var table = document.createElement("TABLE");
@@ -60,9 +64,7 @@ async function viewQuestion() {
   let questions = [];
 
   try {
-    console.log("testing");
     const response = await fetch('http://localhost:2050/api/test/getquestions');
-    console.log("my Response :" + response);
     const data = await response.json();
 
 
@@ -138,6 +140,40 @@ async function deleteQuestion(questionID) {
   }
 }
 
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////  TEST RECORDS ///////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+async function displayTestHistory() {
+  try {
+    const response = await fetch('http://localhost:2050/api/test/gethistory');
+    const data = await response.json();
+
+
+    if (data.status === true && data.statusCode === 200) {
+      let q = data.data;
+
+      console.log("CALL sUCCSSfUL");
+      // for (let idx in q) {
+      //   var row = table.insertRow(idx);
+      //   row.insertCell(0).innerHTML = q[idx].id;
+      //   row.insertCell(1).innerHTML = q[idx].question_text;
+      //   row.insertCell(2).innerHTML = q[idx].answer;
+      //   row.insertCell(3).innerHTML = "<td><input type='button' value='Delete' onclick='deleteQuestion(" + q[idx].id + ")'></td>";
+
+      // }
+
+    }
+    else
+    {
+      console.log(data);
+      }
+  } catch (error) {
+    console.log(error);
+    
+  }
+  toggleView('history')
+
+}
 
 function addQuestionView() {
 
@@ -148,21 +184,34 @@ function toggleView(str) {
   if (str == 'add') {
     addQueBtn.style.display = 'none';
     formDiv.style.display = 'block';
+    testHistoryBtn.style.display = 'block';
 
 
     viewQueBtn.style.display = 'block';
     tableDiv.style.display = 'none';
+    historyTableDiv.style.display = 'none';
+
 
   }
-  else {
+  else if (str == 'view') {
     viewQueBtn.style.display = 'none';
     tableDiv.style.display = 'block';
+    testHistoryBtn.style.display = 'block';
 
     addQueBtn.style.display = 'block';
     formDiv.style.display = 'none';
-
-
+    historyTableDiv.style.display = 'none';
   }
+  else {
+    addQueBtn.style.display = 'block';
+    viewQueBtn.style.display = 'block';
+    testHistoryBtn.style.display = 'none';
+
+    historyTableDiv.style.display = 'block';
+    tableDiv.style.display = 'none';
+    formDiv.style.display = 'none';
+  }
+
 }
 
 

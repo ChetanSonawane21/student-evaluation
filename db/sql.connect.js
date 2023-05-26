@@ -4,7 +4,8 @@ const Model = sequelize_connection.models;
 const TableModels = {
   USER: Model.user,
   QUESTION: Model.question,
-  TEST: Model.test
+  TEST: Model.test,
+  HISTORY: Model.test_history
 };
 
 module.exports = {

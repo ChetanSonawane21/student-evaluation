@@ -1,7 +1,7 @@
 var mysql = require('mysql2');
 
 const { Sequelize } = require('sequelize');
-const { DB_TABLES: { QUESTION, TEST } } = require('../../db/sql.connect')
+const { DB_TABLES: { QUESTION, TEST , HISTORY} } = require('../../db/sql.connect')
 const { commonWords } = require('../../common/utils/commonWords')
 const {
   findUncommonKeywords,
@@ -260,6 +260,44 @@ class TestController {
         error: error.message
       });
     }
+  }
+
+
+
+// ////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////// TEST HISTORY API //////////////////////////
+// ////////////////////////////////////////////////////////////////////////////
+  async getTestHistory(req, res) {
+
+
+    console.log("HISTORY CALLED !!! ");
+
+
+    try {
+      const allRecords = await HISTORY.findAll({
+        attributes: ['test_id', 'email', 'name', 'score', 'q1', 'q2', 'q3', 'q4', 'q5', 'a1', 'a2', 'a3', 'a4', 'a5', 'm1', 'm2', 'm3', 'm4', 'm5'],
+        raw: true,
+      });
+
+      if (!allRecords.length) {
+        return res.fail({ statusCode: 200, message: 'Failed to find questions !' });
+      };
+
+      res.ok({
+        message: "Questions fetched successfully.",
+        data: allRecords
+      });
+    } catch (error) {
+      res.fail({
+        message: 'Failed to find questions.',
+        error: error.message
+      });
+    }
+
+
+
+
+
   }
 
 
