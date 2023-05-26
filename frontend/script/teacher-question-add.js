@@ -157,20 +157,35 @@ async function displayTestHistory() {
     if (data.status === true && data.statusCode === 200) {
       let q = data.data;
 
+      
       for (let idx in q) {
+        var testData = JSON.parse(q[idx].answer_sheet);
+
+        var ts = new Date(q[idx].created_ts);
+        var date = ts.getDate() + "/" + ts.getMonth() + "/" + ts.getFullYear() +" "+ts.getHours()+":"+ts.getMinutes();
+        
         var row = historyTable.insertRow(idx);
-        row.insertCell(0).innerHTML = q[idx].test_id;
-        row.insertCell(1).innerHTML = q[idx].email;
-        row.insertCell(2).innerHTML = q[idx].name;
-        row.insertCell(3).innerHTML = q[idx].score;
+        row.insertCell(0).innerHTML = q[idx].id;
+        row.insertCell(1).innerHTML = 'a@gmail.com';
+        row.insertCell(2).innerHTML = date;
+        row.insertCell(3).innerHTML = testData.overall_answer_accuracy_score;
+        for (let q in testData.answer_sheet)
+        {
+          row.insertCell(parseInt(q) + parseInt(4)).innerHTML = testData.answer_sheet[q].answer_accuracy_score;
+          }
         // row.insertCell(3).innerHTML = "<td><input type='button' value='Delete' onclick='deleteQuestion(" + q[idx].id + ")'></td>";
       }
 
       var header = historyTable.createTHead().insertRow(0);
       header.insertCell(0).innerHTML = "<b>Test Id</b>";
       header.insertCell(1).innerHTML = "<b>Email</b>";
-      header.insertCell(2).innerHTML = "<b>Name</b>";
+      header.insertCell(2).innerHTML = "<b>Completed At</b>";
       header.insertCell(3).innerHTML = "<b>Score</b>";
+      header.insertCell(4).innerHTML = "<b>M1</b>";
+      header.insertCell(5).innerHTML = "<b>M2</b>";
+      header.insertCell(6).innerHTML = "<b>M3</b>";
+      header.insertCell(7).innerHTML = "<b>M4</b>";
+      header.insertCell(8).innerHTML = "<b>M5</b>";
 
 
 

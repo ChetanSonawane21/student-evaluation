@@ -1,5 +1,6 @@
 require('express-async-errors');
 const express = require('express');
+var cookieParser = require('cookieParser')
 app = express();
 const { Config } = require('./common/config/config');
 const err = require('./error/index');

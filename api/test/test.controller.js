@@ -269,8 +269,9 @@ class TestController {
 // ////////////////////////////////////////////////////////////////////////////
   async getTestHistory(req, res) {
     try {
-      const allRecords = await HISTORY.findAll({
-        attributes: ['test_id', 'email', 'name', 'score', 'q1', 'q2', 'q3', 'q4', 'q5', 'a1', 'a2', 'a3', 'a4', 'a5', 'm1', 'm2', 'm3', 'm4', 'm5'],
+      const allRecords = await TEST.findAll({
+        attributes: ['id', 'answer_sheet', 'is_deleted', 'created_ts', 'updated_ts'],
+        // attributes: ['test_id', 'email', 'name', 'score', 'q1', 'q2', 'q3', 'q4', 'q5', 'a1', 'a2', 'a3', 'a4', 'a5', 'm1', 'm2', 'm3', 'm4', 'm5'],
         raw: true,
       });
 
