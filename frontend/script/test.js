@@ -82,8 +82,9 @@ function saveAnswer() {
  * Evaluate student answers with the help of backend API
  */
 async function showResults() {
+  let mail = getCookie('userEmail');
   try {
-    const response = await fetch('http://localhost:2050/api/test/evaluate', {
+    const response = await fetch('http://localhost:2050/api/test/evaluate/'+mail, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -197,3 +198,20 @@ submitButton.addEventListener('click', () => {
  * Start quiz
  */
 startQuiz();
+
+
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}

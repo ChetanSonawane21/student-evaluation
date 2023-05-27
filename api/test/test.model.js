@@ -9,6 +9,10 @@ module.exports = (sequelize_connection, Sequelize) => {
         type: Sequelize.TEXT,
         allowNull: false
       },
+      mail: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
       ...commonFields
     },
     schemaOptions

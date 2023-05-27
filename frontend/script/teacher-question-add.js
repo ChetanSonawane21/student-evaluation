@@ -157,6 +157,7 @@ async function displayTestHistory() {
     if (data.status === true && data.statusCode === 200) {
       let q = data.data;
 
+
       
       for (let idx in q) {
         var testData = JSON.parse(q[idx].answer_sheet);
@@ -164,9 +165,10 @@ async function displayTestHistory() {
         var ts = new Date(q[idx].created_ts);
         var date = ts.getDate() + "/" + ts.getMonth() + "/" + ts.getFullYear() +" "+ts.getHours()+":"+ts.getMinutes();
         
+
         var row = historyTable.insertRow(idx);
         row.insertCell(0).innerHTML = q[idx].id;
-        row.insertCell(1).innerHTML = 'a@gmail.com';
+        row.insertCell(1).innerHTML = q[idx].mail;
         row.insertCell(2).innerHTML = date;
         row.insertCell(3).innerHTML = testData.overall_answer_accuracy_score;
         for (let q in testData.answer_sheet)
