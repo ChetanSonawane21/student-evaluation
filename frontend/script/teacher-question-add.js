@@ -12,6 +12,10 @@ var historyTableDiv = document.getElementById('history-table');
 var table = document.createElement("TABLE");
 var historyTable = document.createElement("TABLE");
 
+var checkboxDiv = document.getElementById("checkboxDiv");
+var checkBoxLatest = document.getElementById("check-latest");
+var latestFirst = false;
+
 
 function addQuestion() {
   // Get form inputs
@@ -159,6 +163,12 @@ async function displayTestHistory() {
 
 
       
+      console.log(q);
+      if (latestFirst)
+      {
+        q.reverse();
+        
+        }
       for (let idx in q) {
         var testData = JSON.parse(q[idx].answer_sheet);
 
@@ -173,7 +183,8 @@ async function displayTestHistory() {
         row.insertCell(3).innerHTML = testData.overall_answer_accuracy_score;
         for (let q in testData.answer_sheet)
         {
-          row.insertCell(parseInt(q) + parseInt(4)).innerHTML = testData.answer_sheet[q].answer_accuracy_score;
+          row.insertCell(parseInt(q*2) + parseInt(4)).innerHTML = testData.answer_sheet[q].question_text;
+          row.insertCell(parseInt(q*2) + parseInt(5)).innerHTML = testData.answer_sheet[q].answer;
           }
         // row.insertCell(3).innerHTML = "<td><input type='button' value='Delete' onclick='deleteQuestion(" + q[idx].id + ")'></td>";
       }
@@ -183,13 +194,16 @@ async function displayTestHistory() {
       header.insertCell(1).innerHTML = "<b>Email</b>";
       header.insertCell(2).innerHTML = "<b>Completed At</b>";
       header.insertCell(3).innerHTML = "<b>Score</b>";
-      header.insertCell(4).innerHTML = "<b>M1</b>";
-      header.insertCell(5).innerHTML = "<b>M2</b>";
-      header.insertCell(6).innerHTML = "<b>M3</b>";
-      header.insertCell(7).innerHTML = "<b>M4</b>";
-      header.insertCell(8).innerHTML = "<b>M5</b>";
-
-
+      header.insertCell(4).innerHTML = "<b>Question 1</b>";
+      header.insertCell(5).innerHTML = "<b>Answer 1</b>";
+      header.insertCell(6).innerHTML = "<b>Question 2</b>";
+      header.insertCell(7).innerHTML = "<b>Answer 2</b>";
+      header.insertCell(8).innerHTML = "<b>Question 3</b>";
+      header.insertCell(9).innerHTML = "<b>Answer 3</b>";
+      header.insertCell(10).innerHTML = "<b>Question 4</b>";
+      header.insertCell(11).innerHTML = "<b>Answer 4</b>";
+      header.insertCell(12).innerHTML = "<b>Question 5</b>";
+      header.insertCell(13).innerHTML = "<b>Answer 5</b>";
 
     }
     else
@@ -219,6 +233,7 @@ function toggleView(str) {
     testHistoryBtn.style.display = 'block';
 
 
+    checkboxDiv.style.display = 'none';
     viewQueBtn.style.display = 'block';
     tableDiv.style.display = 'none';
     historyTableDiv.style.display = 'none';
@@ -226,6 +241,7 @@ function toggleView(str) {
 
   }
   else if (str == 'view') {
+    checkboxDiv.style.display = 'none';
     viewQueBtn.style.display = 'none';
     tableDiv.style.display = 'block';
     testHistoryBtn.style.display = 'block';
@@ -235,6 +251,7 @@ function toggleView(str) {
     historyTableDiv.style.display = 'none';
   }
   else {
+    checkboxDiv.style.display = 'block';
     addQueBtn.style.display = 'block';
     viewQueBtn.style.display = 'block';
     testHistoryBtn.style.display = 'none';
@@ -246,9 +263,15 @@ function toggleView(str) {
 
 }
 
+checkBoxLatest.addEventListener('change', function () {
+  latestFirst = this.checked;
+  displayTestHistory()
+})
+
 
 
 
 $(document).ready(function () {
+  // checkboxDiv.style.display = 'none';
   viewQuestion();
 });
